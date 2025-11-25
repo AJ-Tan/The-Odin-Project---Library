@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Backgrounds */
+  --bg-page: #121212;           /* page background */
+  --bg-book-item: #1e1e1e;      /* individual book background */
+  --bg-book-hover: #272727;     /* hover on book */
+
+  /* Text */
+  --text-primary: #e0e0e0;      /* main text */
+  --text-secondary: #b0b0b0;    /* author, pages */
+  --text-accent: #80d8ff;       /* buttons and accents */
+
+  --read-bg: #2e7d32;       /* green   */
+  --read-bg-hover: #388e3c;
+  --read-text: #ffffff;
+
+  --unread-bg: #c62828;     /* red     */
+  --unread-bg-hover: #d32f2f;
+  --unread-text: #ffffff;
+
+  /* Border */
+  --border: #2c2c2c;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  background-color: var(--bg-page);
+  font-family: Inter, Verdana, sans-serif;
+  padding: 2rem;
+}
+
+.books {
+  border: 2px solid var(--border);
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 14rem);
+  justify-content: space-around;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.book-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  
+  width: 14rem;
+  overflow: hidden;
+}
+
+.book-cover {
+  height: 24rem;
+  margin-block-start: -5rem;
+}
+
+.book-title {
+  color: var(--text-primary);
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-inline-end: 1rem;
+}
+
+.book-author {
+  color: var(--text-secondary);
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-inline-end: 1rem;
+}
+
+.book-pages {
+  color: var(--text-secondary);
+}
+
+.book-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.btn-book-read {
+  border: none;
+  border-radius: 0.3rem;
+  padding-block: 0.5rem;
+
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  &[data-isRead='false'] {
+    background-color: var(--read-bg);
+    color: var(--read-text);
+
+    &:hover {
+      background-color: var(--read-bg-hover);
+    }
+  }
+
+  &[data-isRead='true'] {
+    background-color: var(--unread-bg);
+    color: var(--unread-text);
+
+    &:hover {
+      background-color: var(--unread-bg-hover);
+    }
+  }
+}
