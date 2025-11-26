@@ -80,8 +80,7 @@ body {
 }
 
 .book-cover {
-  height: 24rem;
-  margin-block-start: -5rem;
+  height: 20rem;
 }
 
 .book-title {
