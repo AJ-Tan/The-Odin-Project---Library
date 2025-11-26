@@ -80,7 +80,7 @@ Library.prototype = {
     bookActionsNode.classList.add('book-actions')
 
     const bookReadNode = document.createElement('button');
-    bookReadNode.textContent = 'Mark read';
+    bookReadNode.textContent = book_read ? 'Mark unread' : 'Mark read';
     bookReadNode.classList.add('btn', 'btn_read');
     bookReadNode.setAttribute('type', 'button');
     bookReadNode.setAttribute('data-isRead', book_read);
