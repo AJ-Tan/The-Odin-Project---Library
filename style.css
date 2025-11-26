@@ -6,29 +6,50 @@
 
 :root {
   /* Backgrounds */
-  --bg-page: #121212;           /* page background */
-  --bg-book-item: #1e1e1e;      /* individual book background */
-  --bg-book-hover: #272727;     /* hover on book */
+--bg-page: #f0fdf4;           /* light page background */
+--bg-book-item: #e6f4ea;      /* individual book background */
+--bg-book-hover: #d0ead4;     /* hover on book */
 
-  /* Text */
-  --text-primary: #e0e0e0;      /* main text */
-  --text-secondary: #b0b0b0;    /* author, pages */
-  --text-accent: #80d8ff;       /* buttons and accents */
+/* Text */
+--text-primary: #1a1a1a;      /* main text */
+--text-secondary: #4b4b4b;    /* author, pages */
+--text-accent: #2e7d32;       /* buttons and accents (green) */
 
-  --read-bg: #2e7d32;       /* green   */
-  --read-bg-hover: #388e3c;
-  --read-text: #ffffff;
+/* Read / Unread */
+--read-bg: #a5d6a7;           /* light green */
+--read-bg-hover: #81c784;
+--read-text: #1a1a1a;         /* dark text for readability */
 
-  --unread-bg: #c62828;     /* red     */
-  --unread-bg-hover: #d32f2f;
-  --unread-text: #ffffff;
+--unread-bg: #ef9a9a;         /* light red/pink */
+--unread-bg-hover: #e57373;
+--unread-text: #1a1a1a;       /* dark text */
 
-  /* Border */
-  --border: #2c2c2c;
+/* Button */
+--btn-bg: hsl(122, 45%, 43%);           /* light green */
+--btn-bg-hover: hsl(122, 45%, 32%);
+/* Border */
+--border: #c0e6c0;            /* soft green border */
+
+/* Input background and text */
+--input-bg: #ffffff;           /* white/light background for readability */
+--input-text: #1a1a1a;         /* dark text for contrast */
+--input-placeholder: #6b6b6b;  /* placeholder text color (gray) */
+
+/* Input borders */
+--input-border: #c0e6c0;       /* soft green border */
+--input-border-focus: #2e7d32; /* green accent on focus */
+
+/* Input hover / active state */
+--input-hover-bg: #f0fdf4;     /* very light green background on hover */
 }
 
 ul {
   list-style-type: none;
+}
+
+button,input, label {
+  font: inherit;
+  cursor: pointer;
 }
 
 body {
@@ -89,18 +110,23 @@ body {
   gap: 0.2rem;
 }
 
-.btn-book-read {
+.book-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
   border: none;
   border-radius: 0.3rem;
   padding-block: 0.5rem;
+  width: 100%;
+  max-width: 6.5rem;
 
   font-family: inherit;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 600;
 
-  cursor: pointer;
-
-  &[data-isRead='false'] {
+  &.btn_read[data-isRead='false'] {
     background-color: var(--read-bg);
     color: var(--read-text);
 
@@ -109,12 +135,95 @@ body {
     }
   }
 
-  &[data-isRead='true'] {
+  &.btn_read[data-isRead='true'], &.btn_delete {
     background-color: var(--unread-bg);
     color: var(--unread-text);
 
     &:hover {
       background-color: var(--unread-bg-hover);
     }
+  }
+
+  &.btn-add {
+    margin-block: 1rem;
+    background-color: var(--read-bg);
+
+    &:hover {
+      background-color: var(--read-bg-hover);
+    }
+  }
+}
+
+dialog {
+  margin: auto;
+  border: 2px solid var(--input-border-focus);
+  border-radius: 1rem;
+  font-size: 1.3rem;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.form__add-book {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: var(--bg-book-item);
+  padding: 2rem
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--input-text);
+}
+
+.btn-close {
+  border: none;
+  background-color: transparent;
+  color: var(--btn-bg);
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  &:hover {
+    color: var(--btn-bg-hover);
+  }
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  display: none;
+}
+
+input[type='text'],input[type='number'] {
+  border: 2px solid var(--input-border);
+  border-radius: 0.3rem;
+  padding: 0.3rem 1rem;
+  outline: none;
+
+  &:focus {
+    border-color: var(--input-border-focus);
+  }
+}
+
+.btn-primary {
+  border: none;
+  border-radius: 0.5rem;
+  max-width: 10rem;
+  margin-block-start: 1rem;
+  padding-block: 0.5rem;
+  
+  background-color: var(--read-bg);
+  color: var(--read-text);
+
+  &:hover {
+    background-color: var(--read-bg-hover);
   }
 }

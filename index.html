@@ -15,9 +15,63 @@
   </head>
   <body>
     <main>
+      <h1>LIBRARY</h1>
+      <button id="add-book" type="button" class="btn btn-add">Add Book</button>
       <section class="books">
         <ul class="book-list"></ul>
       </section>
     </main>
+
+    <dialog id="modal__book">
+      <form action="" class="form__add-book">
+        <div class="modal__header">
+          <h2>Add Book</h2>
+          <button id="btn-close-modal" class="btn-close" type="button">
+            X
+          </button>
+        </div>
+        <div class="input-group text">
+          <label for="input-title">Book Title:</label>
+          <input type="text" id="input-title" name="inputTitle" required />
+        </div>
+        <div class="input-group text">
+          <label for="input-author">Author:</label>
+          <input type="text" id="input-author" name="inputAuthor" required />
+        </div>
+        <div class="input-group text">
+          <label for="input-pages">Pages:</label>
+          <input type="number" id="input-pages" name="inputPages" required />
+        </div>
+        <div class="input-group text">
+          <label for="input-cover">Cover link:</label>
+          <input type="text" id="input-cover" name="inputCover" />
+        </div>
+        <div class="input-group radio">
+          <p>Have you read the book before?</p>
+          <div class="radio-group" role="radiogroup">
+            <label>
+              <input
+                type="radio"
+                id="input-read"
+                name="inputRead"
+                value="true"
+              />
+              Yes
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="input-read"
+                name="inputRead"
+                value="false"
+                checked
+              />
+              No
+            </label>
+          </div>
+        </div>
+        <button id="btn-add" class="btn-primary" type="submit">Create</button>
+      </form>
+    </dialog>
   </body>
 </html>
